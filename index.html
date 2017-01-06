@@ -24,6 +24,9 @@
         body {
             font-size: 21px;
         }
+        h2 {
+            margin-top: 80px;
+        }
         .answer {
             font-size: 90px;
         }
@@ -59,7 +62,7 @@
             <input type="number" data-ng-model="taskFrequency">
         </label></p>
 
-        <h2 align="center" style="margin-top: 80px;">So, is it worth it?</h2>
+        <h2 align="center">So, is it worth it?</h2>
         <div ng-show="!showAnswer()" class="answer">
             <p align="center">?</p>
         </div>
@@ -83,9 +86,11 @@
         };
 
         $scope.isItWorthIt = function () {
-            var totalTaskTime = $scope.taskHours * 24 * $scope.taskFrequency * 365 * 5;
-            console.log('totalTaskTime = ' + totalTaskTime);
-            return $scope.projectDays < totalTaskTime;
+            var hoursPerDay = $scope.taskHours * $scope.taskFrequency;
+            var hoursPerYear = hoursPerDay * 365;
+            var hoursPerFiveYears = hoursPerYear * 5;
+            var projectHours = $scope.projectDays * 24;
+            return projectHours < hoursPerFiveYears;
         };
     }
 </script>
