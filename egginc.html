@@ -20,5 +20,34 @@
         </p>
     </div>
 </div>
+<div class="container">
+    <section>
+        <h2>Can I make the next egg?</h2>
+        <p>The value of your farm scales linearly with the number of chickens. However, the line doesn't start at 0, as
+            the value of your farm's assets (habitats, transports) affects the value at the point of 0 chickens. This is
+            going to take algebra, but don't worry, I got your back.
+        </p>
+        <p>First, I need to take a screen shot of your farm with the next goal up, like this:</p>
+    </section>
+</div>
+
+<script>
+    function EggIncCtrl($scope) {
+        debugger;
+
+        $scope.showAnswer = function () {
+            return $scope.projectDays > 0 && $scope.taskHours > 0 && $scope.taskFrequency > 0;
+        };
+
+        $scope.isItWorthIt = function () {
+            var hoursPerDay = $scope.taskHours * $scope.taskFrequency;
+            var hoursPerYear = hoursPerDay * 365;
+            var hoursPerFiveYears = hoursPerYear * 5;
+            var projectHours = $scope.projectDays * 24;
+            return projectHours < hoursPerFiveYears;
+        };
+    }
+</script>
+
 </body>
 </html>
